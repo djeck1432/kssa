@@ -1,0 +1,41 @@
+{% extends 'main.html' %}
+{% load staticfiles %}
+
+{% block main %}
+<!--HERE START FAQ PART-->
+</br>
+</br>
+
+
+<div class="container ">
+    <div class="panel-group" id="faqAccordion">
+
+        {% for object in object_list %}
+        <div class="panel panel-default ">
+            <div class="panel-heading accordion-toggle question-toggle collapsed" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question{{ object.id }}">
+                 <h4 class="panel-title">
+                    <a href="#" class="ing">Q: {{ object.question }}</a>
+              </h4>
+
+            </div>
+            <div id="question{{ object.id }}" class="panel-collapse collapse" style="height: 0px;">
+                <div class="panel-body">
+                     <h5><span class="label label-primary">Ответ</span></h5>
+
+                    <p>{{ object.answer }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+    <!--/panel-group-->
+</div>
+
+</br>
+</br>
+</br>
+</br>
+</br>
+<!--HERE ENDED FAQ PART-->
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends 'main.html' %}
+{% load staticfiles %}
+
+{% block main %}
+<!--REGISTRAION FROM-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Ай-да к нам!</div>
+                <div class="panel-body">
+                    {% for error in form.non_field_errors %}
+                        <div class="alert alert-danger">{{ error }}</div>
+                    {% endfor %}
+                    <form role="form" method="post" action="" accept-charset="UTF-8">
+                        {% csrf_token %}
+
+                        {{ form.first_name.errors }}
+                        <label for="first_name">Ваше имя</label>
+                        <input type="text" id="id_first_name" class="form-control" name="first_name" placeholder="Василий">
+
+                        {{ form.last_name.errors }}
+                        <label for="last_name">Ваша фамилия</label>
+                        <input type="text" id="id_last_name" class="form-control" name="last_name" placeholder="Пупкин">
+
+                        {{ form.date_of_birth.errors }}
+                         <label for="date_of_birth">Дата рождения</label>
+                        <input type="text" id="id_date_of_birth" class="form-control" name="date_of_birth" placeholder="дд/мм/гг">
+
+                        {{ form.email.errors }}
+                          <label for="email" class="m-t-10">Email Address</label>
+                        <input type="text" id="id_email" class="form-control" name="email" placeholder="Example: john.smith@gmail.com">
+
+                        {{ form.gender.errors }}
+                        <label for="gender" class="m-t-10">Uni</label>
+{#                        <select id="id_gender" class="form-control" name="gender">#}
+{#                            <option value="unknown">Невыбрано</option>#}
+{#                            <option value="alabama">Первый</option>#}
+{#                            <option value="alaska">Второй</option>#}
+{#                        </select>#}
+                        {{ form.gender }}
+
+                        {{ form.faculty.errors }}
+                        <label for="faculty" class="m-t-10">Выбери свой факультет</label>
+{#                        <select id="id_faculty" class="form-control" name="faculty">#}
+{#                            <option value="unknown">Нету</option>#}
+{#                            <option value="physic">Физ-мат</option>#}
+{#                            <option value="phylosophy">Фил-фак</option>#}
+{#                        </select>#}
+                        {{ form.faculty }}
+
+                        {{ form.phone_number.errors }}
+                        <label for="phone_number">Номер мобильного</label>
+                        <input type="numbers" id="id_phone_number" class="form-control" name="phone_number" placeholder="+38x-xx-xx-xxx">
+
+                        {{ form.city.errors }}
+                        <label for="city" class="m-t-10">Выберите свой город</label>
+{#                        <select id="id_city" class="form-control" name="city">#}
+{#                            <option value="unknown">Первый</option>#}
+{#                            <option value="physic">Астана</option>#}
+{#                            <option value="phylosophy">Другой</option>#}
+{#                        </select>#}
+                        {{ form.city }}
+
+                        {{ form.address.errors }}
+                        <label for="address">Ваш адрес</label>
+                        <input type="text" id="id_address" class="form-control" name="address" placeholder="Страна/Город/Улица">
+
+                        {{ form.password1.errors }}
+                        <label for="password1" class="m-t-10">Пароль</label>
+                        <input type="password" id="id_password1" class="form-control" name="password1" placeholder="">
+
+                        {{ form.password2.errors }}
+                        <label for="password2" class="m-t-10">Повторите пароль</label>
+                        <input type="password2" id="id_password2" class="form-control" name="password2" placeholder="">
+                        
+                        <center><input type="submit" class="btn btn-primary m-t-10" id="submitbtn" name="submit" value="Создать аккаунт"></center>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<REG FORM ENDED HERE -->
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'main.html' %}
+{% load staticfiles %}
+
+{% block main %}
+<div class="jumbotron">
+   <div class="container">
+     <div class="row">
+     <!--<img class="img-responsive" src="images/main-photo.jpg">-->
+
+    </div>
+  </div>
+</div>
+
+{% for article in object_list %}
+    <article class="article__item container">
+      <div class="row">
+        <header class="article__item__header col-xs-12">
+          <h2>
+            <a href="#">{{ article.title }}</a>
+          </h2>
+          <p class="article__item__meta">
+            <time datetime="2016-07-12T22:37:25+00:00">{{ article.pub_date|date:'j.m.Y' }}</time> ·
+            <a href="#"><i class="fa fa-comments"></i> <span class="dsq-postid" data-dsqidentifier="#">0</span></a>
+          </p>
+        </header>
+          {% if article.image %}
+          <div class="article__item__img col-xs-12 ">
+              <a href="#"><img width="1170" height="360" class="img-responsive"
+                               src="{{ article.image.url }}" alt="img"></a>
+          </div>
+          {% endif %}
+            <div class="article__item__desc col-xs-12">
+          <p>{{ article.text|slice:':850' }}
+            {% if article.text.length > 850 %}...{% endif %}
+          </p>
+        </div>
+        <footer class="article__item__read-more col-xs-12">
+          <a href="#">
+            Читать дальше        <i class="fa fa-arrow-right"></i>
+          </a>
+        </footer>
+      </div>
+      <hr>
+    </article>
+{% endfor %}
+{% endblock %}

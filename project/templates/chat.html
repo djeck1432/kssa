@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+{% load staticfiles %}
+
+{% block main %}
+<!--CHAT START HERE -->
+<script type="text/javascript" src="{% static "https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" %}" ></script>
+<script type="text/javascript" src="{%static "https://comet-server.ru/CometServerApi.js"%}" ></script>
+<script type="text/javascript" src="{%static "https://comet-server.ru/doc/html_chat.js"%}" ></script>
+<link rel="stylesheet" type="text/css" href="{% static "https://comet-server.ru/doc/html_chat.css"%}"></link>
+ 
+<!-- Осталось настроить сам чат и запустить, для этого пишем небольшой скрипт. -->
+<div id="html-chat"></div>
+<style>
+/* Здесь настроим css стили для чата*/
+.holder-html-chat{ border: 3px solid #428bca;padding:10px;background-color: #fff; width: 100%;}
+.html-chat-history{ min-width: 100%;  overflow: auto; min-height:350px; max-height: 600px; border: 2px solid #428bca; padding: 90px; border-radius: 3%;}
+.html-chat-js-name{ border-width: 1px; border-color: #428bca; height: 50px; border-radius: 5%; margin-top:22px;}
+.html-chat-js-input{max-width: 600px; max-height: 100px; margin-top:10px; border-radius: 5%; margin-left: 3px; background-color: #fff}
+.html-chat-js-button-holder{ margin-bottom: 0px;margin-top: 10px; }
+.html-chat-js-button-holder input{ width: 220px; }
+.html-chat-js-answer{ float:right; }
+.html-chat-js-answer a{ color: #777;font-size: 12px; font-family: cursive;}
+.html-chat-js-answer a:hover{ color: #338;font-size: 12px; font-family: cursive;}
+.html-chat-msg{ margin: 0px; }
+</style>
+ 
+<script>
+ 
+   /**
+    * Чат работает на comet-server.ru
+    * По любым вопросам обращайтесь support@comet-server.ru или на сайт comet-server.ru
+    */
+    $(document).ready(function()
+    {
+       // Запуск api комет сервера
+       CometServer().start({dev_id: 1116 }) // Идентификатор разработчика на comet-server.ru
+ 
+       // Запуск чата. Передаём ему элемент в котором надо создать окно чата.
+       htmljs_Chat_Init( $("#html-chat") )
+    });
+</script>
+
+
+{% endfor %}
+{% endblock %}

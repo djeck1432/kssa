@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+  <div class="homepage">
+
+<nav class="navbar navbar-default" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    <a class="navbar-brand img-responsible img-circle" href="{% url 'mainpage' %}"><img src="{% static "images/logo-kz.png" %}" alt="logo"></a>
+    </div>
+<div class="collapse navbar-collapse navbar-right">
+    <ul class="nav navbar-nav">
+        <li><a href="{% url 'mainpage' %}">Главная</a></li>
+        <li><a href="event.html">События</a></li>
+        <li><a href="{% url 'history' %}">История</a></li>
+        <li><a href="{% url 'faq' %}">FAQ</a></li>
+        <li><a href="charity.html">Благотворительность</a></li>
+        <li><a href="partners.html">Партнеры</a></li>
+
+      <li class="dropdown">
+        <a href="chat.html" class="dropdown-toggle" data-toggle="dropdown">Чат <i class="fa fa-angle-down"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="chat.html">Общий чат</a></li>
+          <li><a href="#">Чат факультета</a></li>
+        </ul>
+    </li>
+      <li>
+          {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}">Выход</a>
+          {% else %}
+              <a href="{% url 'login' %}?next={{ request.path }}">Вход</a>
+          {% endif %}
+      </li>
+    </ul>
+   </div>
+  </div>
+</nav>
+
+{% block main %}
+{% endblock %}
+
+<footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; 2016 <a target="_blank" href="http://vk.com/ivanulo" title="Kazakhstan student society">Our web-stud</a>. All Rights Reserved.
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                    <ul class="social-share">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a href="#"><i class="fa fa-skype"></i></a></li>
+                            </ul>
+                        <li><a href="#">Главная</a></li>
+                        <li><a href="{% url 'history' %}">Наша история</a></li>
+                        <li><a href="{% url 'faq' %}">Faq</a></li>
+                        <li><a href="#">Контакты</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+
+  </div>
+{% endblock %}

@@ -8,20 +8,20 @@
     <meta name="Author: Pelykh Ivan" content="">
     <title>Kazakhstan student society in Austria</title>
 
-  <!-- core CSS -->
+     {% block additional_css %}
     <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
     <link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet">
     <link href="{% static "css/animate.min.css" %}" rel="stylesheet">
     <link href="{% static "css/prettyPhoto.css" %}" rel="stylesheet">
     <link href="{% static "css/main.css" %}" rel="stylesheet">
     <link href="{% static "css/responsive.css" %}" rel="stylesheet">
-    {% block additional_css %}
-    {% endblock %}
+     {% endblock %}
     {% block additional_js %}
+        <script src="{% static "js/html5shiv.js" %}"></script>
+        <script src="{% static "js/respond.min.js" %}"></script>
     {% endblock %}
     <!--[if lt IE 9]>
-    <script src="{% static "js/html5shiv.js" %}"></script>
-    <script src="{% static "js/respond.min.js" %}"></script>
+
     <![endif]-->
 
 </head>

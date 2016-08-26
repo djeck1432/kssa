@@ -14,3 +14,9 @@ urlpatterns = [
     url(r'^register/$', RegisterFormView.as_view(), name='register'),
     url(r'^', include('main.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns += [
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    ]
